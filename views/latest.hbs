@@ -1,0 +1,208 @@
+
+
+{{#> app}}
+  {{#*inline "content"}} 
+     <div class="f">
+      <br>
+     <br>
+     {{!-- <div class="container"> --}}
+           <div class="allcontain">
+
+    {{!-- <div class="row"> --}}
+          <div class="row" style="margin-left:40px ;">
+
+      
+		<h1 class="text-center"></style><span class="bdots">&bullet;&#160;</span>L A T E S T <span class="carstxt">C A R S</span>&#160;&bullet;</h1>
+     <br>
+     <br>
+     {{!-- <br>
+     <br> --}}
+{{!-- <div class="search" style="margin-left:500px;">
+  <form action="/latest-cars/search">
+    <input type="search" name="s" placeholder="Search">
+         <button type="button"><i class="fas fa-microphone"></i></button> 
+    <input type="submit" value="Search">
+  </form>
+</div> --}}
+
+
+
+<div class="search" style="margin-left:500px;">
+  <form action="/latest-cars/search" id="search-form">
+    <input name="s" type="serach" placeholder="Search...">
+    <input type="submit" value="Search">
+     {{!-- <button type="button"><i class="fas fa-microphone"></i></button>  --}}
+  </form>
+  {{!-- <p class="info"></p> --}}
+</div>
+
+
+
+
+<br>
+{{!-- <br>
+<br> --}}
+      {{#each data}}
+      <div class="col-md-4 col-lg-3 mb-2">
+        <div class="card">
+          <img src="/image/{{image}}" class="card-img-top img-card" style="width:88%">
+          {{!-- <h5 style="margin-left: 10px;">car</h5> --}}
+          <div class="card-body text-center">
+
+
+            <div class="price" style="text-align: center;"><h4>&#8377;&#160;{{price}}</h4></div>
+           <div class="m"><h6 style="display:inline-flex;">{{milage}}&#160;kmpl &#160; &#160;| &#160; &#160; {{engine}}&#160;cc &#160; &#160;| &#160; &#160; {{fuel}}</h6>
+           </div>
+
+            <a href="/latest-cars/{{slug}}" class="btn bg-primary text-white">{{name}}</a>
+          </div>
+                      {{!-- <a href="/products/{{id}}" class="btn bg-primary text-white">{{name}}</a> --}}
+
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    </div>
+    </div>
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination" style="margin-left: 550px; margin-top:40px">
+    <li class="page-item">
+      <a class="page-link" aria-label="Previous">
+        {{!-- <span aria-hidden="true">&laquo;</span> --}}
+        <span class="sr-only" ><img src="/image/tata-nano2.jpg" alt=""style="width:49 ;"></span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="/latest-cars/search?s={{s}}&page=1">1</a></li>
+    <li class="page-item"><a class="page-link" href="/latest-cars/search?s={{s}}&page=2">2</a></li>
+    <li class="page-item"><a class="page-link" href="/latest-cars/search?s={{s}}&page=3">3</a></li>
+   <li class="page-item"><a class="page-link" href="/latest-cars/search?s={{s}}&page=4">4</a></li>
+    <li class="page-item"><a class="page-link" href="/latest-cars/search?s={{s}}&page=5">5</a></li>
+    <li class="page-item"><a class="page-link" href="/latest-cars/pagination?page=6">6</a></li>
+
+    <li class="page-item">
+      <a class="page-link" aria-label="Previous">
+        {{!-- <span aria-hidden="true">&laquo;</span> --}}
+        <span class="sr-only" ><img src="/image/tata-nano2.jpg" alt=""style="width:49 ;"></span>
+      </a>
+      {{!-- <a class="page-link" href="/latest-cars/pagination?page={{page}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a> --}}
+    </li>
+  </ul>
+</nav>
+ {{/inline}}
+{{/app}}
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    {{!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> --}}
+
+
+
+<script>
+  const searchForm = document.querySelector("#search-form");
+const searchFormInput = searchForm.querySelector("input"); // <=> document.querySelector("#search-form input");
+const info = document.querySelector(".info");
+
+// The speech recognition interface lives on the browser’s window object
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition; // if none exists -> undefined
+
+if(SpeechRecognition) {
+  console.log("Your Browser supports speech Recognition");
+  
+  const recognition = new SpeechRecognition();
+  recognition.continuous = true;
+  // recognition.lang = "en-US";
+
+  searchForm.insertAdjacentHTML("beforeend", '<button type="button"><i class="fas fa-microphone"></i></button>');
+  searchFormInput.style.paddingRight = "50px";
+
+  const micBtn = searchForm.querySelector("button");
+  const micIcon = micBtn.firstElementChild;
+
+  micBtn.addEventListener("click", micBtnClick);
+  function micBtnClick() {
+    if(micIcon.classList.contains("fa-microphone")) { // Start Voice Recognition
+      recognition.start(); // First time you have to allow access to mic!
+    }
+    else {
+      recognition.stop();
+    }
+  }
+
+  recognition.addEventListener("start", startSpeechRecognition); // <=> recognition.onstart = function() {...}
+  function startSpeechRecognition() {
+    micIcon.classList.remove("fa-microphone");
+    micIcon.classList.add("fa-microphone-slash");
+    searchFormInput.focus();
+    console.log("Voice activated, SPEAK");
+  }
+
+  recognition.addEventListener("end", endSpeechRecognition); // <=> recognition.onend = function() {...}
+  function endSpeechRecognition() {
+    micIcon.classList.remove("fa-microphone-slash");
+    micIcon.classList.add("fa-microphone");
+    searchFormInput.focus();
+    console.log("Speech recognition service disconnected");
+  }
+
+  recognition.addEventListener("result", resultOfSpeechRecognition); // <=> recognition.onresult = function(event) {...} - Fires when you stop talking
+  function resultOfSpeechRecognition(event) {
+    const current = event.resultIndex;
+    const transcript = event.results[current][0].transcript;
+    console.log('voice',transcript)
+    
+    if(transcript.toLowerCase().trim()==="stop recording") {
+      recognition.stop();
+    }
+    else if(!searchFormInput.value) {
+      searchFormInput.value = transcript;
+    }
+    else {
+      if(transcript.toLowerCase().trim()==="go") {
+        searchForm.submit();
+      }
+      else if(transcript.toLowerCase().trim()==="reset input") {
+        searchFormInput.value = "";
+      }
+      else {
+        searchFormInput.value = transcript;
+      }
+    }
+    // searchFormInput.value = transcript;
+    // searchFormInput.focus();
+    // setTimeout(() => {
+    //   searchForm.submit();
+    // }, 500);
+  }
+  
+  info.textContent = 'Voice Commands: "stop recording", "reset input", "go"';
+  
+}
+else {
+  console.log("Your Browser does not support speech Recognition");
+  info.textContent = "Your Browser does not support Speech Recognition";
+}
+</script>
+
+
+
+
+    <style>
+      .img-card {
+  height: 14vw;
+  width: auto;
+  object-fit: cover;
+}
+.bg-primary {
+  background-color: #1abc9c !important;
+}
+.f {
+  background-color: #eee;
+}
+    </style>
+  

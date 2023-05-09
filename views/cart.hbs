@@ -1,0 +1,52 @@
+{{#> app}}
+  {{#*inline "content"}}
+    <div class="card">
+        <br><br><br><br><br><br>
+      <div class="card-header">
+        Products in Cart
+      </div>
+      <div class="card-body">
+        <table class="table table-bordered table-striped text-center">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Price</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{!-- {{#each viewData.productsInCart}} --}}
+             {{#each viewData}}
+            <tr>
+              <td>{{getId}}</td>
+              <td>{{getName}}</td>
+              <td>${{getPrice}}</td>
+              <td>{{lookup ../session.LatestCar id}}</td>
+              <td><form action="/cart/delete/{{id}}" method="POST">
+                  <button class="btn btn-danger">
+                    <i class="bi-trash"></i>
+                  </button>
+                </form> </td>
+            </tr>
+            {{/each}}
+          </tbody>
+        </table>
+        <div class="row">
+          <div class="text-end">
+            {{!-- <a class="btn btn-outline-secondary mb-2"><b>Total to pay:</b> ${{viewData.total}}</a> --}}
+            <a class="btn btn-outline-secondary mb-2"><b>Total to pay:</b> ${{total}}</a>
+            {{!-- {{#if viewData.productsInCart}} --}}
+             {{#if viewData}}
+            <a href="/cart/purchase" class="btn bg-primary text-white mb-2">Purchase</a>
+            <a href="/cart/deleteAll" class="btn btn-danger mb-2">
+              Remove all products from Cart
+            </a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/inline}}
+{{/app}}

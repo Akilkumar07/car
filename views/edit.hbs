@@ -1,0 +1,174 @@
+<div class="card mb-4">
+      <div class="card-header">
+       <h1> Edit Products </h1>
+      </div>
+      <div class="card-body">
+        {{#with data}}
+        <form method="POST" action="/admin/edit/{{slug}}"enctype="multipart/form-data">
+          
+            <div class="col">
+              <div class="mb-3 row">
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Name:</label>
+                {{!-- <div class="col-lg-10 col-md-6 col-sm-12"> --}}
+                <div class="col-lg-4">
+                  <input name="name" value="{{getName}}" type="text" class="form-control" required>
+                </div>
+              </div>
+            </div>
+             <div class="col">
+              <div class="mb-3 row">
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Slug:</label>
+                <div class="col-lg-3">
+                  <input name="slug" value="{{slug}}" type="text" class="form-control" required>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3 row">
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Price:</label>
+                <div class="col-lg-2">
+                  <input name="price" value="{{price}}" type="number" class="form-control" required>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3 row">
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Milage:</label>
+                <div class="col-lg-2">
+                  <input name="milage" value="{{milage}}" type="number" class="form-control" required>
+                </div>
+              </div>
+            </div>
+            
+        
+            <div class="col">
+              <div class="mb-3 row">
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Image:</label>
+                <div class="col-lg-4">
+                  <input class="form-control" type="file" name="image">
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              &nbsp;
+            </div>
+
+
+            <div class="col">
+              <div class="mb-3 row">
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Description:</label>
+                <div class="col-lg-5">
+                <textarea class="form-control" name="description" rows="3"  required>{{description}}</textarea>
+                </div>
+              </div>
+            </div>
+
+          {{!-- <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea class="form-control" name="description"  required></textarea>
+          </div> --}}
+
+
+                <div class="col">
+                  <div class="mb-3 row">
+                    <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Engine(cc):</label>
+                     <div class="col-lg-2">
+                      <input name="engine" value="{{engine}}" type="number" class="form-control" required>
+                     </div>
+                 </div>
+               </div>
+
+                <div class="col">
+                   <div class="mb-3 row">
+                      <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Fuel:</label>
+                      <div class="col-lg-3">
+                       <input name="fuel" value="{{fuel}}" type="text" class="form-control" required>
+                       </div>
+                   </div>
+                </div>
+
+                 <div class="col">
+                   <div class="mb-3 row">
+                      <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Version:</label>
+                      <div class="col-lg-2">
+                       <input name="version" value="{{version}}" type="number" class="form-control" required>
+                       </div>
+                   </div>
+                </div>
+
+                 <div class="col">
+                   <div class="mb-3 row">
+                      <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Seats:</label>
+                      <div class="col-lg-2">
+                       <input name="seats" value="{{seats}}" type="number" class="form-control" required>
+                       </div>
+                   </div>
+                </div>
+              
+
+
+          <button type="submit" class="btn btn-primary" style="margin-left:;">Submit</button>
+        </form>
+        {{/with}}
+      </div>
+      <div class="image" style="display: inline-flex;height: 48vh;width:640px  ">
+                <img src="/image/audi2.jpg" class="card-img-top img-card"  >
+                 <img src="/image/renault.jpg" class="card-img-top img-card" >
+               <img src="/image/tron.avif" class="card-img-top img-card"  >
+
+       </div>
+
+    </div>
+
+
+      {{!-- manage product --}}
+
+       
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<style>
+
+
+
+.fixed {
+  -ms-flex: 0 0 250px;
+  flex: 0 0 250px;
+}
+
+.content-grey {
+  background-color: #f8f9fc;
+}
+
+hr {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+
+.img-profile {
+  height: 2rem;
+  width: 2rem;
+}
+
+.profile-font {
+  color: #858796 !important;
+  font-size: 80%;
+  font-weight: 400;
+}
+
+.card-header {
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #e3e6f0;
+}
+
+.card  {
+    background-color: lightgray;
+    text-align: center;
+}
+
+
+
+
+</style>

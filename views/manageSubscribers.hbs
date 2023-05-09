@@ -1,0 +1,109 @@
+<div class="card mb-4">
+      <div class="card-header">
+       <h1> Create Products </h1>
+      </div>
+      <div class="card-body">
+        <form method="POST" action="/mail/send">
+          
+            <div class="col">
+              <div class="mb-3 row">
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">From:</label>
+                {{!-- <div class="col-lg-10 col-md-6 col-sm-12"> --}}
+                <div class="col-lg-4">
+                  <input name="from" type="text" value="kumarakil88@gmail.com" class="form-control" required>
+                </div>
+              </div>
+            </div>
+             <div class="col">
+              <div class="mb-3 row">
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">To:</label>
+                <div class="col-lg-3">
+                  <input name="to" type="text" class="form-control">
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3 row">
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Subject:</label>
+                <div class="col-lg-2">
+                  <input name="subject" type="text" class="form-control" required>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3 row">
+                <label class="col-lg-2 col-md-6 col-sm-12 col-form-label">Content:</label>
+                <div class="col-lg-5">
+                  <textarea class="form-control" name="text" rows="3"  required></textarea>
+                </div>
+              </div>
+            </div>
+            
+        
+           
+
+
+          <button type="submit" class="btn btn-primary" style="margin-left:;">SEND</button>
+        </form>
+      </div>
+      <div class="image" style="display: inline-flex;height: 48vh;width:640px  ">
+                <img src="/image/audi2.jpg" class="card-img-top img-card"  >
+                 <img src="/image/renault.jpg" class="card-img-top img-card" >
+               <img src="/image/tron.avif" class="card-img-top img-card"  >
+
+       </div>
+
+    </div>
+
+
+      {{!-- manage product --}}
+
+       
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<style>
+
+
+
+.fixed {
+  -ms-flex: 0 0 250px;
+  flex: 0 0 250px;
+}
+
+.content-grey {
+  background-color: #f8f9fc;
+}
+
+hr {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+
+.img-profile {
+  height: 2rem;
+  width: 2rem;
+}
+
+.profile-font {
+  color: #858796 !important;
+  font-size: 80%;
+  font-weight: 400;
+}
+
+.card-header {
+  background-color: #f8f9fc;
+  border-bottom: 1px solid #e3e6f0;
+}
+
+.card  {
+    background-color: lightgray;
+    text-align: center;
+}
+
+
+
+
+</style>
