@@ -13,6 +13,8 @@ import { CartModule } from './cart/cart.module';
 import { AuthService } from './auth/auth.service';
 import { LatestCar } from './latest-cars/entities/latest-car.entity';
 import { BookingModule } from './booking/booking.module';
+import { Entity } from 'typeorm';
+import { Auth } from './auth/entities/auth.entity';
 
 @Module({
   imports: [
@@ -26,6 +28,7 @@ import { BookingModule } from './booking/booking.module';
       password: '',
       port: 3306,
       autoLoadEntities: true,
+      // entities: [Auth],
       synchronize: false,
     }),
     TypeOrmModule.forFeature([LatestCar]),

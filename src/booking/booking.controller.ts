@@ -28,6 +28,7 @@ export class BookingController {
   booking(@Body() body) {
     // const firstname = body.firstname;
     console.log('fname', body.name);
+    console.log('lastname', body.lastname);
   }
 
   @Get(':id')
